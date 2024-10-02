@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instant Weather</title>
+    <script defer src="js/script.js"></script>
 </head>
 <body>
 
@@ -14,10 +15,10 @@
     <main>
 
 
-        <form id ="postcodeForm">
+        <form id ="postcodeForm" method="POST">
             <label for="postcode">Enter your postcode:</label>
             <input type="text" id="postcode" name="postcode" required>
-            <button type="submit">Get Weather</button>
+            <button type="button" onclick="dataRetrieve()">Get Weather</button>
         </form>
     </main>
     
