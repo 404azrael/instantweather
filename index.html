@@ -16,10 +16,11 @@
 
 
         <form id ="postcodeForm" method="POST">
-            <label for="postcode">Enter your postcode:</label>
-            <input type="text" id="postcode" name="postcode" required>
-            <button type="button" onclick="dataRetrieve()">Get Weather</button>
+            <label for="postcode">Saisir un code postal:</label>
+            <input type="text" id="postcode" name="postcode" placeholder="code à 5 chiffres" required>
+            <select id="pickedCity"></select>
         </form>
+        <button type="button" id ="submit" name="submit">bouton</button>
     </main>
     
 </body>
