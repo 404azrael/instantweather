@@ -11,7 +11,7 @@ let labRain = document.getElementById("pRain");
 
 document.addEventListener("DOMContentLoaded", function() {
 
-
+    
     async function fetchCities(postCode){
         let url = decoupURL + postCode;
         try{
@@ -96,4 +96,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 });
-
