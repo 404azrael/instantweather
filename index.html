@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Weather</title>
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+
+
+    <h1>Instant Weather</h1>
+
+
+    <main>
+
+
+        <form id ="postcodeForm" method="POST">
+            <label for="postcode">Saisir un code postal:</label>
+            <input type="text" id="postcode" name="postcode" placeholder="code à 5 chiffres" required>
+            <select id="pickedCity"></select>
+        </form>
+        <button type="button" id ="submit" name="submit">Obtenir des informations météo</button>
+    </main>
+
+    <label>Ville : </label>
+    <label id="city"></label>
+    </br>
+    <label>Temp min : </label>
+    <label id="tmin"></label>
+    </br>
+    <label>Temp max :</label>
+    <label id="tmax"></label>
+    </br>
+    <label>Durée d'ensoleillement :</label>
+    <label id="dSun"></label>
+    </br>
+    <label>Probabilité de pluie :</label>
+    <label id="pRain"></label>
+    </br>
+    
+</body>
+</html>
