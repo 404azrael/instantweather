@@ -9,7 +9,9 @@ let labCity = document.getElementById("city");
 let labSun = document.getElementById("dSun");
 let labRain = document.getElementById("pRain");
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+
+
     async function fetchCities(postCode) {
         let url = decoupURL + postCode;
         try {
@@ -23,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+
     function displayCities(data) {
         pickedCity.innerHTML = "";
         data.forEach(city => {
@@ -35,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         submit.style.display = "block";
 
     }
+
 
     async function fetchWeatherByCity(city) {
         let url = "https://api.meteo-concept.com/api/forecast/daily/0?token=" + apitoken + "&insee=" + city;
@@ -52,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let postCodeValue = pickedPostCode.value;
         pickedCity.style.display = "none";
         submit.style.display = "none";
+
         if (/^\d{5}$/.test(postCodeValue)) {
             try {
                 let data = await fetchCities(postCodeValue);
@@ -62,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+
+
 
     submit.addEventListener("click", async function () {
         let pickedCityValue = pickedCity.value;
