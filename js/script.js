@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
             try{
                 let data = await fetchWeatherByCity(pickedCityValue);
                 displayWeather(data);
+                labCity
                 console.table(data);
             } catch (err){
                 console.error("Une erreur est survenue lors de la recherche d'informations météo. Erreur :", err);
