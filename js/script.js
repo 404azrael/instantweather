@@ -3,6 +3,11 @@ const apitoken = "3bf02307c9507740afd22f335bd933f37a124a0339002c93881295f35d3e3f
 const pickedPostCode = document.getElementById("postcode");
 const pickedCity = document.getElementById("pickedCity");
 const submit = document.getElementById("submit");
+let labTmax = document.getElementById("tmax");
+let labTmin = document.getElementById("tmin");
+let labCity = document.getElementById("city");
+let labSun = document.getElementById("dSun");
+let labRain = document.getElementById("pRain");
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -67,10 +72,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     submit.addEventListener("click", async function(){
        let pickedCityValue = pickedCity.value;
+       console.log(pickedCityValue);
        if (pickedCityValue != null){
             try{
                 let data = await fetchWeatherByCity(pickedCityValue);
-                //displayWeather(data);
+                displayWeather(data);
                 console.table(data);
             } catch (err){
                 console.error("Une erreur est survenue lors de la recherche d'informations météo. Erreur :", err);
@@ -78,6 +84,15 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+
+
+    async function displayWeather(data){
+        labCity.textContent = data["city"]["name"];
+        labTmin.textContent = data["forecast"]["tmin"];
+        labTmax.textContent = data["forecast"]["tmax"];
+        labSun.textContent = data["forecast"]["sun_hours"];
+        labRain.textContent = data["forecast"]["probarain"];
+    }
 
 
 });
