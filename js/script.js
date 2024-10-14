@@ -86,11 +86,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     async function createWeatherCard(data) {
+        let cityCard = document.createElement("div");
         let tMinCard = document.createElement("div");
         let tMaxCard = document.createElement("div");
         let sunCard = document.createElement("div");
         let rainCard = document.createElement("div");
 
+        cityCard.textContent = `Nom de la ville : ${data["city"]["name"]}`;
         tMinCard.textContent = `Température minimale : ${data["forecast"]["tmin"]}°C`;
         tMaxCard.textContent = `Température maximale : ${data["forecast"]["tmax"]}°C`;
         sunCard.textContent = `Ensoleillement : ${data["forecast"]["sun_hours"]}h`;
@@ -99,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let request = document.getElementById("request");
         let weather = document.getElementById("weather");
 
+        weather.appendChild(cityCard);
         weather.appendChild(tMinCard);
         weather.appendChild(tMaxCard);
         weather.appendChild(sunCard);

@@ -25,6 +25,17 @@
             required
           />
           <select id="pickedCity"></select>
+          <input
+            type="range"
+            id="ndays"
+            name="ndays"
+            min="1"
+            value="1"
+            max="7"
+            oninput="this.nextElementSibling.value = this.value"
+          />
+          <output>1</output>
+
         </form>
         <button type="button" id="submit" name="submit">
           Obtenir des informations météo
