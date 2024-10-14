@@ -8,6 +8,8 @@ let labTmin = document.getElementById("tmin");
 let labCity = document.getElementById("city");
 let labSun = document.getElementById("dSun");
 let labRain = document.getElementById("pRain");
+let ndays = document.getElementById("nDays");
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     async function fetchWeatherByCity(city) {
-        let url = "https://api.meteo-concept.com/api/forecast/daily/0?token=" + apitoken + "&insee=" + city;
+        let url = "https://api.meteo-concept.com/api/forecast/daily?token=" + apitoken + "&insee=" + city;
         try {
             const response = await fetch(url);
             const data = await response.json();
@@ -86,26 +88,34 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     async function createWeatherCard(data) {
-        let cityCard = document.createElement("div");
-        let tMinCard = document.createElement("div");
-        let tMaxCard = document.createElement("div");
-        let sunCard = document.createElement("div");
-        let rainCard = document.createElement("div");
 
-        cityCard.textContent = `Nom de la ville : ${data["city"]["name"]}`;
-        tMinCard.textContent = `Température minimale : ${data["forecast"]["tmin"]}°C`;
-        tMaxCard.textContent = `Température maximale : ${data["forecast"]["tmax"]}°C`;
-        sunCard.textContent = `Ensoleillement : ${data["forecast"]["sun_hours"]}h`;
-        rainCard.textContent = `Probabilité de pluie : ${data["forecast"]["probarain"]}%`;
+        for(let i = 0; i < ndays.value; i++){
+            let card = document.createElement("div");
+            
+            let cityCard = document.createElement("div");
+            let tMinCard = document.createElement("div");
+            let tMaxCard = document.createElement("div");
+            let sunCard = document.createElement("div");
+            let rainCard = document.createElement("div");
+    
+            cityCard.textContent = `Nom de la ville : ${data["city"]["name"]}`;
+            tMinCard.textContent = `Température minimale : ${data["forecast"][i]["tmin"]}°C`;
+            tMaxCard.textContent = `Température maximale : ${data["forecast"][i]["tmax"]}°C`;
+            sunCard.textContent = `Ensoleillement : ${data["forecast"][i]["sun_hours"]}h`;
+            rainCard.textContent = `Probabilité de pluie : ${data["forecast"][i]["probarain"]}%`;
+    
+            let request = document.getElementById("request");
+            let weather = document.getElementById("weather");
+            
+            weather.appendChild(card);
+            card.appendChild(cityCard);
+            card.appendChild(tMinCard);
+            card.appendChild(tMaxCard);
+            card.appendChild(sunCard);
+            card.appendChild(rainCard);
+        }
 
-        let request = document.getElementById("request");
-        let weather = document.getElementById("weather");
-
-        weather.appendChild(cityCard);
-        weather.appendChild(tMinCard);
-        weather.appendChild(tMaxCard);
-        weather.appendChild(sunCard);
-        weather.appendChild(rainCard);
+        
 
         let newSearchButton = document.createElement("div");
         newSearchButton.textContent = "Nouvelle recherche";
