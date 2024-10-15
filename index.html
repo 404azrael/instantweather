@@ -6,9 +6,7 @@
     <title>Instant Weather</title>
     <script defer src="js/script.js"></script>
 
-
-    <link rel="stylesheet" href="css/style.css"/>
-
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <h1>Instant Weather</h1>
@@ -35,7 +33,33 @@
             oninput="this.nextElementSibling.value = this.value"
           />
           <output>1</output>
-
+          <br>
+          <div id="options">
+            <label>
+              <input type="checkbox" name="latitude" value="latitude" />
+              Latitude décimale de la commune
+            </label>
+            <label>
+              <input type="checkbox" name="longitude" value="longitude" />
+              Longitude décimale de la commune
+            </label>
+            <label>
+              <input type="checkbox" name="rainfall" value="rainfall" />
+              Cumul de pluie sur la journée en mm
+            </label>
+            <label>
+              <input type="checkbox" name="windSpeed" value="windSpeed" />
+              Vent moyen à 10 mètres en km/h
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="windDirection"
+                value="windDirection"
+              />
+              Direction du vent en degrés (0 à 360°)
+            </label>
+          </div>
         </form>
         <button type="button" id="submit" name="submit">
           Obtenir des informations météo

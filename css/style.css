@@ -109,8 +109,17 @@ button:active {
 }
 
 
+#options {
+    display: block;
+    margin-top: 20px; /* Ensure it's placed under the slider */
+}
 
+#options label {
+    display: block; /* Each checkbox on its own row */
+    margin-bottom: 10px; /* Add space between the rows */
+}
 
-
-
+input[type="checkbox"] {
+    margin-right: 10px;
+}
 
