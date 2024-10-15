@@ -5,7 +5,8 @@
 }
 
 .newSearchButton {
-    background-color: #4CAF50;
+    /*background-color: #4CAF50;*/
+    background-color: #3498db;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -22,9 +23,9 @@
 }
 
 .newSearchButton:hover {
-    background-color: #45a049;
     max-width: 40em;
     width: 100%;
+    background-color: #2980b9;
 }
 
 .newSearchButton:active {
