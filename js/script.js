@@ -95,18 +95,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     async function createWeatherCard(data) {
+        let cityInfo = document.getElementById("cityInfo");
+        cityInfo.id = "cityName";
+        let cityCard = document.createElement("div");
+        cityCard.textContent = `Nom de la ville : ${data["city"]["name"]}`;
+        cityInfo.appendChild(cityCard);
+
+        //latitude is check
+        if(latitue.checked){
+            let latitudeCard = document.createElement("div");
+            latitudeCard.textContent = `Latitude :  ${data["city"]["latitude"]}`;
+            cityInfo.appendChild(latitudeCard);
+        }
+
+        //longitude is check
+        if(longitude.checked){
+            let longitudeCard = document.createElement("div");
+            longitudeCard.textContent = `longitude :  ${data["city"]["longitude"]}`;
+            cityInfo.appendChild(longitudeCard);
+        }
 
         for(let i = 0; i < ndays.value; i++){
             let card = document.createElement("div");
+            card.className = "weatherCard";
             
-            let cityCard = document.createElement("div");
+            
             let tMinCard = document.createElement("div");
             let tMaxCard = document.createElement("div");
             let sunCard = document.createElement("div");
             let rainCard = document.createElement("div");
             let separator = document.createElement("div");
     
-            cityCard.textContent = `Nom de la ville : ${data["city"]["name"]}`;
             tMinCard.textContent = `Température minimale : ${data["forecast"][i]["tmin"]}°C`;
             tMaxCard.textContent = `Température maximale : ${data["forecast"][i]["tmax"]}°C`;
             sunCard.textContent = `Ensoleillement : ${data["forecast"][i]["sun_hours"]}h`;
@@ -117,25 +136,12 @@ document.addEventListener("DOMContentLoaded", function () {
             let weather = document.getElementById("weather");
             
             weather.appendChild(card);
-            card.appendChild(cityCard);
             card.appendChild(tMinCard);
             card.appendChild(tMaxCard);
             card.appendChild(sunCard);
             card.appendChild(rainCard);
 
-            //latitude is check
-            if(latitue.checked){
-                let latitudeCard = document.createElement("div");
-                latitudeCard.textContent = `Latitude :  ${data["city"]["latitude"]}`;
-                card.appendChild(latitudeCard);
-            }
-
-            //longitude is check
-            if(longitude.checked){
-                let longitudeCard = document.createElement("div");
-                longitudeCard.textContent = `longitude :  ${data["city"]["longitude"]}`;
-                card.appendChild(longitudeCard);
-            }
+            
 
             //rainfall is check
             if(rainfall.checked){
@@ -158,9 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 card.appendChild(windDirectionCard);
             }
 
-            if (i != ndays.value - 1) {
-                card.appendChild(separator);
-            }
+            
         }
 
         
