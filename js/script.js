@@ -22,6 +22,11 @@ let windDirection = document.getElementById("windDirection");
 let forecast;
 
 
+//get the prev and next btn and hide them
+let prevBtn = document.getElementById("prev");
+let nextBtn = document.getElementById("next");
+prevBtn.style.display = "none";
+nextBtn.style.display = "none";
 document.addEventListener("DOMContentLoaded", function () {
 
 
@@ -99,6 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     async function createWeatherCard(data) {
+        let request = document.getElementById("request");
+        let weather = document.getElementById("weather");
+
         //get the city infos div
         let cityInfo = document.getElementById("cityInfo");
         cityInfo.id = "cityName";
@@ -166,23 +174,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 picIcon.src = "ressources/animated/thunder.svg";
             }
     
+            //add the info in each div
             tMinCard.textContent = `Température minimale : ${data["forecast"][i]["tmin"]}°C`;
             tMaxCard.textContent = `Température maximale : ${data["forecast"][i]["tmax"]}°C`;
             sunCard.textContent = `Ensoleillement : ${data["forecast"][i]["sun_hours"]}h`;
             rainCard.textContent = `Probabilité de pluie : ${data["forecast"][i]["probarain"]}%`;
-
-            let request = document.getElementById("request");
-            let weather = document.getElementById("weather");
-            
-            weather.appendChild(card);
-            card.appendChild(picIcon);
-            //card.appendChild(cityCard);
-            card.appendChild(tMinCard);
-            card.appendChild(tMaxCard);
-            card.appendChild(sunCard);
-            card.appendChild(rainCard);
-
-            
 
             //rainfall is check
             if(rainfall.checked){
@@ -205,6 +201,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 card.appendChild(windDirectionCard);
             }
 
+            //add the element to the card
+            card.appendChild(picIcon);
+            card.appendChild(tMinCard);
+            card.appendChild(tMaxCard);
+            card.appendChild(sunCard);
+            card.appendChild(rainCard);
+
+            //add the card to the weather section
+            weather.appendChild(card);
             
         }
 
