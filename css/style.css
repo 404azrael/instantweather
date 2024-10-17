@@ -65,7 +65,7 @@ h1 {
 }
 
 
-.request, .weatherCard, #cityName{
+.request, .weatherCard{
     background: rgba(255, 255, 255, 0.8);
     padding: 2em;
     border-radius: 10px;
@@ -76,10 +76,28 @@ h1 {
     margin-bottom: 3em;
 }
 
-#cityName{
+#cityName {
     display: flex;
-
+    flex-direction: column;
+    text-align: center;
 }
+
+.city-card {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.lat-lon-card {
+    display: flex; /* Met les éléments sur une seule ligne */
+    gap: 20px; /* Espacement entre la latitude et la longitude */
+    justify-content: center; /* Centre les éléments sur la ligne */
+}
+
+.lat-lon-item {
+    font-size: 1.2em;
+}
+
 
 form {
     margin-bottom: 20px;

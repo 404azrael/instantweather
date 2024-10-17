@@ -11,7 +11,7 @@ let labRain = document.getElementById("pRain");
 let ndays = document.getElementById("nDays");
 
 //get checkbox
-let latitue = document.getElementById("latitude");
+let latitude = document.getElementById("latitude");
 let longitude = document.getElementById("longitude");
 let rainfall = document.getElementById("rainfall");
 let windSpeed = document.getElementById("windSpeed");
@@ -95,25 +95,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     async function createWeatherCard(data) {
+        //get the city infos div
         let cityInfo = document.getElementById("cityInfo");
         cityInfo.id = "cityName";
+
+        //create a div for the city name
         let cityCard = document.createElement("div");
-        cityCard.textContent = `Nom de la ville : ${data["city"]["name"]}`;
+        cityCard.classList.add("city-card");
+        cityCard.textContent = `${data["city"]["name"]}`;
+        //add the div to the city infos card
         cityInfo.appendChild(cityCard);
 
+        //lat and long card
+        let latLongCard = document.createElement("div");
+        latLongCard.classList.add("lat-lon-card");
         //latitude is check
-        if(latitue.checked){
+        if(latitude.checked){
             let latitudeCard = document.createElement("div");
+            latitudeCard.classList.add("lat-lon-item");
             latitudeCard.textContent = `Latitude :  ${data["city"]["latitude"]}`;
-            cityInfo.appendChild(latitudeCard);
+            latLongCard.appendChild(latitudeCard);
         }
 
         //longitude is check
         if(longitude.checked){
             let longitudeCard = document.createElement("div");
+            longitude.classList.add("lat-lon-item");
             longitudeCard.textContent = `longitude :  ${data["city"]["longitude"]}`;
-            cityInfo.appendChild(longitudeCard);
+            latLongCard.appendChild(longitudeCard);
         }
+        //
+        cityInfo.appendChild(latLongCard);
 
         for(let i = 0; i < ndays.value; i++){
             let card = document.createElement("div");
