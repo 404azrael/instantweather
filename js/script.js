@@ -10,6 +10,13 @@ let labSun = document.getElementById("dSun");
 let labRain = document.getElementById("pRain");
 let ndays = document.getElementById("nDays");
 
+//get checkbox
+let latitue = document.getElementById("latitude");
+let longitude = document.getElementById("longitude");
+let rainfall = document.getElementById("rainfall");
+let windSpeed = document.getElementById("windSpeed");
+let windDirection = document.getElementById("windDirection");
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -115,11 +122,48 @@ document.addEventListener("DOMContentLoaded", function () {
             card.appendChild(tMaxCard);
             card.appendChild(sunCard);
             card.appendChild(rainCard);
+
+            //latitude is check
+            if(latitue.checked){
+                let latitudeCard = document.createElement("div");
+                latitudeCard.textContent = `Latitude :  ${data["city"]["latitude"]}`;
+                card.appendChild(latitudeCard);
+            }
+
+            //longitude is check
+            if(longitude.checked){
+                let longitudeCard = document.createElement("div");
+                longitudeCard.textContent = `longitude :  ${data["city"]["longitude"]}`;
+                card.appendChild(longitudeCard);
+            }
+
+            //rainfall is check
+            if(rainfall.checked){
+                let rainfallCard = document.createElement("div");
+                rainfallCard.textContent = `cumul de pluie sur la journee en mm :  ${data["forecast"][i]["rr10"]}`;
+                card.appendChild(rainfallCard);
+            }
+
+            //windSpeed is check
+            if(windSpeed.checked){
+                let windSpeedCard = document.createElement("div");
+                windSpeedCard.textContent = `Vent moyen à 10 mètres en km/h :  ${data["forecast"][i]["wind10m"]}`;
+                card.appendChild(windSpeedCard);
+            }
+
+            //windDirection is check
+            if(windDirection.checked){
+                let windDirectionCard = document.createElement("div");
+                windDirectionCard.textContent = `Direction du vent en degrés (0 à 360°) :  ${data["forecast"][i]["dirwind10m"]}`;
+                card.appendChild(windDirectionCard);
+            }
+
             if (i != ndays.value - 1) {
                 card.appendChild(separator);
             }
         }
 
+        
         
 
         let newSearchButton = document.createElement("div");
