@@ -10,6 +10,8 @@ let labSun = document.getElementById("dSun");
 let labRain = document.getElementById("pRain");
 let ndays = document.getElementById("nDays");
 
+let forecast;
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -74,12 +76,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     submit.addEventListener("click", async function () {
         let pickedCityValue = pickedCity.value;
-        console.log(pickedCityValue);
         if (pickedCityValue != null) {
             try {
                 let data = await fetchWeatherByCity(pickedCityValue);
                 createWeatherCard(data);
-                console.table(data);
+                console.log(data);
+                forecast = data.forecast;
             } catch (err) {
                 console.error("Une erreur est survenue lors de la recherche d'informations météo. Erreur :", err);
                 throw err;
@@ -98,6 +100,31 @@ document.addEventListener("DOMContentLoaded", function () {
             let sunCard = document.createElement("div");
             let rainCard = document.createElement("div");
             let separator = document.createElement("div");
+
+            let meteo = data.forecast[i].weather;
+            let picIcon = document.createElement("img");
+            if (meteo == 0){
+                //soleil
+                picIcon.src = "ressources/animated/day.svg";
+            } else if (meteo >= 3 && meteo <= 5){
+                //nuages
+                picIcon.src = "ressources/animated/cloudy.svg";
+            } else if (meteo >= 10 && meteo <= 16){
+                //pluie
+                picIcon.src = "ressources/animated/rainy-1.svg";
+            } else if (meteo >= 20 && meteo <= 32){
+                //neige
+                picIcon.src = "ressources/animated/snowy-1.svg";
+            } else if (meteo >= 40 && meteo <= 48){
+                //averse
+                picIcon.src = "ressources/animated/rainy-6.svg";
+            } else if (meteo >= 60 && meteo <= 78){
+                //averse neige
+                picIcon.src = "ressources/animated/snowy-6.svg";
+            } else if (meteo >= 100 && meteo <= 138){
+                //orage
+                picIcon.src = "ressources/animated/thunder.svg";
+            }
     
             cityCard.textContent = `Nom de la ville : ${data["city"]["name"]}`;
             tMinCard.textContent = `Température minimale : ${data["forecast"][i]["tmin"]}°C`;
@@ -110,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let weather = document.getElementById("weather");
             
             weather.appendChild(card);
+            card.appendChild(picIcon);
             card.appendChild(cityCard);
             card.appendChild(tMinCard);
             card.appendChild(tMaxCard);
@@ -134,6 +162,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         request.style.display = "none";
         weather.style.display = "block";
+    }
+
+
+    function getWeather(){
+        
     }
 
 
