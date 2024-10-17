@@ -76,6 +76,10 @@ h1 {
     margin-bottom: 3em;
 }
 
+#weather{
+    display: flex;
+}
+
 #cityName {
     display: flex;
     flex-direction: column;
