@@ -5,7 +5,8 @@
 }
 
 .newSearchButton {
-    background-color: #4CAF50;
+    /*background-color: #4CAF50;*/
+    background-color: #3498db;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -22,9 +23,9 @@
 }
 
 .newSearchButton:hover {
-    background-color: #45a049;
     max-width: 40em;
     width: 100%;
+    background-color: #2980b9;
 }
 
 .newSearchButton:active {
@@ -63,15 +64,44 @@ h1 {
     text-align: center;
 }
 
-main {
+
+.request, .weatherCard{
     background: rgba(255, 255, 255, 0.8);
     padding: 2em;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 30em;
     width: 100%;
-    margin: 3em;
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
+
+#weather{
+    display: flex;
+}
+
+#cityName {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.city-card {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.lat-lon-card {
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+}
+
+.lat-lon-item {
+    font-size: 1.2em;
+}
+
 
 form {
     margin-bottom: 20px;
@@ -109,8 +139,17 @@ button:active {
 }
 
 
+#options {
+    display: block;
+    margin-top: 20px; /* Ensure it's placed under the slider */
+}
 
+#options label {
+    display: block; /* Each checkbox on its own row */
+    margin-bottom: 10px; /* Add space between the rows */
+}
 
-
-
+input[type="checkbox"] {
+    margin-right: 10px;
+}
 
