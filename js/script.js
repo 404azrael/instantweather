@@ -124,8 +124,8 @@ document.addEventListener("DOMContentLoaded", function () {
         //longitude is check
         if(longitude.checked){
             let longitudeCard = document.createElement("div");
-            longitude.classList.add("lat-lon-item");
-            longitudeCard.textContent = `longitude :  ${data["city"]["longitude"]}`;
+            longitudeCard.classList.add("lat-lon-item");
+            longitudeCard.textContent = `Longitude :  ${data["city"]["longitude"]}`;
             latLongCard.appendChild(longitudeCard);
         }
         //
