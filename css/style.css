@@ -64,15 +64,40 @@ h1 {
     text-align: center;
 }
 
-main {
+
+.request, .weatherCard{
     background: rgba(255, 255, 255, 0.8);
     padding: 2em;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 30em;
     width: 100%;
-    margin: 3em;
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
+
+#cityName {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.city-card {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.lat-lon-card {
+    display: flex; /* Met les éléments sur une seule ligne */
+    gap: 20px; /* Espacement entre la latitude et la longitude */
+    justify-content: center; /* Centre les éléments sur la ligne */
+}
+
+.lat-lon-item {
+    font-size: 1.2em;
+}
+
 
 form {
     margin-bottom: 20px;

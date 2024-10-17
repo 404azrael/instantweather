@@ -10,6 +10,15 @@ let labSun = document.getElementById("dSun");
 let labRain = document.getElementById("pRain");
 let ndays = document.getElementById("nDays");
 
+
+//get checkbox
+let latitude = document.getElementById("latitude");
+let longitude = document.getElementById("longitude");
+let rainfall = document.getElementById("rainfall");
+let windSpeed = document.getElementById("windSpeed");
+let windDirection = document.getElementById("windDirection");
+
+
 let forecast;
 
 
@@ -90,16 +99,47 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     async function createWeatherCard(data) {
+        //get the city infos div
+        let cityInfo = document.getElementById("cityInfo");
+        cityInfo.id = "cityName";
+
+        //create a div for the city name
+        let cityCard = document.createElement("div");
+        cityCard.classList.add("city-card");
+        cityCard.textContent = `${data["city"]["name"]}`;
+        //add the div to the city infos card
+        cityInfo.appendChild(cityCard);
+
+        //lat and long card
+        let latLongCard = document.createElement("div");
+        latLongCard.classList.add("lat-lon-card");
+        //latitude is check
+        if(latitude.checked){
+            let latitudeCard = document.createElement("div");
+            latitudeCard.classList.add("lat-lon-item");
+            latitudeCard.textContent = `Latitude :  ${data["city"]["latitude"]}`;
+            latLongCard.appendChild(latitudeCard);
+        }
+
+        //longitude is check
+        if(longitude.checked){
+            let longitudeCard = document.createElement("div");
+            longitude.classList.add("lat-lon-item");
+            longitudeCard.textContent = `longitude :  ${data["city"]["longitude"]}`;
+            latLongCard.appendChild(longitudeCard);
+        }
+        //
+        cityInfo.appendChild(latLongCard);
 
         for(let i = 0; i < ndays.value; i++){
             let card = document.createElement("div");
+            card.className = "weatherCard";
             
-            let cityCard = document.createElement("div");
+            
             let tMinCard = document.createElement("div");
             let tMaxCard = document.createElement("div");
             let sunCard = document.createElement("div");
             let rainCard = document.createElement("div");
-            let separator = document.createElement("div");
 
             let meteo = data.forecast[i].weather;
             let picIcon = document.createElement("img");
@@ -126,12 +166,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 picIcon.src = "ressources/animated/thunder.svg";
             }
     
-            cityCard.textContent = `Nom de la ville : ${data["city"]["name"]}`;
             tMinCard.textContent = `Température minimale : ${data["forecast"][i]["tmin"]}°C`;
             tMaxCard.textContent = `Température maximale : ${data["forecast"][i]["tmax"]}°C`;
             sunCard.textContent = `Ensoleillement : ${data["forecast"][i]["sun_hours"]}h`;
             rainCard.textContent = `Probabilité de pluie : ${data["forecast"][i]["probarain"]}%`;
-            separator.textContent = "--------------------------------";
 
             let request = document.getElementById("request");
             let weather = document.getElementById("weather");
@@ -143,11 +181,34 @@ document.addEventListener("DOMContentLoaded", function () {
             card.appendChild(tMaxCard);
             card.appendChild(sunCard);
             card.appendChild(rainCard);
-            if (i != ndays.value - 1) {
-                card.appendChild(separator);
+
+            
+
+            //rainfall is check
+            if(rainfall.checked){
+                let rainfallCard = document.createElement("div");
+                rainfallCard.textContent = `cumul de pluie sur la journee en mm :  ${data["forecast"][i]["rr10"]}`;
+                card.appendChild(rainfallCard);
             }
+
+            //windSpeed is check
+            if(windSpeed.checked){
+                let windSpeedCard = document.createElement("div");
+                windSpeedCard.textContent = `Vent moyen à 10 mètres en km/h :  ${data["forecast"][i]["wind10m"]}`;
+                card.appendChild(windSpeedCard);
+            }
+
+            //windDirection is check
+            if(windDirection.checked){
+                let windDirectionCard = document.createElement("div");
+                windDirectionCard.textContent = `Direction du vent en degrés (0 à 360°) :  ${data["forecast"][i]["dirwind10m"]}`;
+                card.appendChild(windDirectionCard);
+            }
+
+            
         }
 
+        
         
 
         let newSearchButton = document.createElement("div");
@@ -163,12 +224,6 @@ document.addEventListener("DOMContentLoaded", function () {
         request.style.display = "none";
         weather.style.display = "block";
     }
-
-
-    function getWeather(){
-        
-    }
-
 
 });
 
