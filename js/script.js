@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
             weather.appendChild(card);
             card.appendChild(picIcon);
-            card.appendChild(cityCard);
+            //card.appendChild(cityCard);
             card.appendChild(tMinCard);
             card.appendChild(tMaxCard);
             card.appendChild(sunCard);

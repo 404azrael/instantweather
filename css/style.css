@@ -89,9 +89,9 @@ h1 {
 }
 
 .lat-lon-card {
-    display: flex; /* Met les éléments sur une seule ligne */
-    gap: 20px; /* Espacement entre la latitude et la longitude */
-    justify-content: center; /* Centre les éléments sur la ligne */
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
 }
 
 .lat-lon-item {
