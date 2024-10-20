@@ -5,7 +5,6 @@
 }
 
 .newSearchButton {
-    /*background-color: #4CAF50;*/
     background-color: #3498db;
     color: white;
     padding: 14px 20px;
@@ -141,12 +140,12 @@ button:active {
 
 #options {
     display: block;
-    margin-top: 20px; /* Ensure it's placed under the slider */
+    margin-top: 20px;
 }
 
 #options label {
-    display: block; /* Each checkbox on its own row */
-    margin-bottom: 10px; /* Add space between the rows */
+    display: block;
+    margin-bottom: 10px;
 }
 
 input[type="checkbox"] {
