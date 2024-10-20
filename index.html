@@ -4,70 +4,92 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Instant Weather</title>
-    <script defer src="js/script.js"></script>
-
+    <script defer src="/js/script.js"></script>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <h1><img src ="ressources/animated/weather.svg" alt="website icon"> Instant Weather</h1>
+    <h1>
+      <img src="ressources/animated/weather.svg" alt="website icon" /> Instant
+      Weather
+    </h1>
 
-    
-      <section id="request" class="request">
-        <form id="postcodeForm" method="POST">
-          <label for="postcode">Saisir un code postal:</label>
-          <input
-            type="text"
-            id="postcode"
-            name="postcode"
-            placeholder="code à 5 chiffres"
-            required
-          />
-          <select id="pickedCity"></select>
-          <input
-            type="range"
-            id="nDays"
-            name="ndays"
-            min="1"
-            value="1"
-            max="7"
-            oninput="this.nextElementSibling.value = this.value"
-          />
-          <output>1</output>
-          <br>
-          <div id="options">
-            <label>
-              <input type="checkbox" name="latitude" value="latitude" id="latitude"/>
-              Latitude décimale de la commune
-            </label>
-            <label>
-              <input type="checkbox" name="longitude" value="longitude" id="longitude"/>
-              Longitude décimale de la commune
-            </label>
-            <label>
-              <input type="checkbox" name="rainfall" value="rainfall" id="rainfall"/>
-              Cumul de pluie sur la journée en mm
-            </label>
-            <label>
-              <input type="checkbox" name="windSpeed" value="windSpeed" id="windSpeed"/>
-              Vent moyen à 10 mètres en km/h
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="windDirection"
-                value="windDirection"
-                id="windDirection"
-              />
-              Direction du vent en degrés (0 à 360°)
-            </label>
-          </div>
-        </form>
-        <button type="button" id="submit" name="submit">
-          Obtenir des informations météo
-        </button>
-      </section>
-      <div id="cityInfo"></div>
-      <section id="weather"></section>
-    
+    <section id="request" class="request">
+      <form id="postcodeForm" method="POST">
+        <label for="postcode">Saisir un code postal:</label>
+        <input
+          type="text"
+          id="postcode"
+          name="postcode"
+          placeholder="code à 5 chiffres"
+          required
+        />
+
+        <select id="pickedCity" title="Pick a City"></select>
+        <input
+          type="range"
+          id="nDays"
+          name="ndays"
+          min="1"
+          value="1"
+          max="7"
+          oninput="this.nextElementSibling.value = this.value + ' jour(s)'"
+        />
+        <output>1 jour(s)</output>
+        <br />
+        <div id="options">
+          <label for="latitude">
+            <input
+              text=""
+              type="checkbox"
+              name="latitude"
+              value="latitude"
+              id="latitude"
+            />
+            Latitude décimale de la commune
+          </label>
+          <label for="longitude">
+            <input
+              type="checkbox"
+              name="longitude"
+              value="longitude"
+              id="longitude"
+            />
+            Longitude décimale de la commune
+          </label>
+          <label for="rainfall">
+            <input
+              type="checkbox"
+              name="rainfall"
+              value="rainfall"
+              id="rainfall"
+            />
+            Cumul de pluie sur la journée en mm
+          </label>
+          <label for="windSpeed">
+            <input
+              type="checkbox"
+              name="windSpeed"
+              value="windSpeed"
+              id="windSpeed"
+            />
+            Vent moyen à 10 mètres en km/h
+          </label>
+          <label for="windDirection">
+            <input
+              type="checkbox"
+              name="windDirection"
+              value="windDirection"
+              id="windDirection"
+            />
+            Direction du vent en degrés (0 à 360°)
+          </label>
+        </div>
+      </form>
+      <button type="button" id="submit" name="submit">
+        Obtenir des informations météo
+      </button>
+    </section>
+    <div id="cityInfo"></div>
+    <section id="weather"></section>
   </body>
 </html>
