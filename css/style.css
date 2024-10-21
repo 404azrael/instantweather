@@ -38,7 +38,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url('/ressources/ciel.jpg');
+    background-image: url('ressources/ciel.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
